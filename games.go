@@ -1,5 +1,6 @@
-// https://core.telegram.org/bots/api#games
 package telegrambot
+
+// https://core.telegram.org/bots/api#games
 
 import "fmt"
 

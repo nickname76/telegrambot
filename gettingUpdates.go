@@ -1,5 +1,6 @@
-// https://core.telegram.org/bots/api#getting-updates
 package telegrambot
+
+// https://core.telegram.org/bots/api#getting-updates
 
 import "fmt"
 

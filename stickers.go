@@ -1,5 +1,6 @@
-// https://core.telegram.org/bots/api#stickers
 package telegrambot
+
+// https://core.telegram.org/bots/api#stickers
 
 import "fmt"
 

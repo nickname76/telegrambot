@@ -1,5 +1,6 @@
-// https://core.telegram.org/bots/api#inline-mode
 package telegrambot
+
+// https://core.telegram.org/bots/api#inline-mode
 
 import "fmt"
 

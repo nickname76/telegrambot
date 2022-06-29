@@ -1,5 +1,6 @@
-// https://core.telegram.org/bots/api
 package telegrambot
+
+// https://core.telegram.org/bots/api
 
 import (
 	"bytes"

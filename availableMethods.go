@@ -1,5 +1,6 @@
-// https://core.telegram.org/bots/api#available-methods
 package telegrambot
+
+// https://core.telegram.org/bots/api#available-methods
 
 import "fmt"
 

@@ -1,6 +1,6 @@
-// Types not specified in official Telegram Bot API documentation, but still
-// benefitial from being specified
 package telegrambot
+
+// Types which are not exactly specified in the official Bot API documentation
 
 // Unique user identifier
 type UserID ChatID

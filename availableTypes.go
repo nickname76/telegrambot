@@ -1,5 +1,6 @@
-// https://core.telegram.org/bots/api#available-types
 package telegrambot
+
+// https://core.telegram.org/bots/api#available-types
 
 import (
 	"encoding/hex"

@@ -1,5 +1,6 @@
-// https://core.telegram.org/bots/api#payments
 package telegrambot
+
+// https://core.telegram.org/bots/api#payments
 
 import "fmt"
 

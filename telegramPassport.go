@@ -1,5 +1,6 @@
-// https://core.telegram.org/bots/api#telegram-passport
 package telegrambot
+
+// https://core.telegram.org/bots/api#telegram-passport
 
 import "fmt"
 
