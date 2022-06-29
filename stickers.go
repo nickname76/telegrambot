@@ -39,19 +39,21 @@ type Sticker struct {
 //
 // https://core.telegram.org/bots/api#stickerset
 type StickerSet struct {
-	// asdfdsafadsfd
+	// Sticker set name
 	Name StickerSetName `json:"name"`
-	// asdfdsafadsfd
+	// Sticker set title
 	Title string `json:"title"`
-	// asdfdsafadsfd
+	// True, if the sticker set contains animated stickers
+	// https://telegram.org/blog/animated-stickers
 	IsAnimated bool `json:"is_animated"`
-	// asdfdsafadsfd
+	// True, if the sticker set contains video stickers
+	// https://telegram.org/blog/video-stickers-better-reactions
 	IsVideo bool `json:"is_video"`
-	// asdfdsafadsfd
+	// True, if the sticker set contains masks
 	ContainsMasks bool `json:"contains_masks"`
-	// asdfdsafadsfd
+	// List of all set stickers
 	Stickers []*Sticker `json:"stickers"`
-	// sdafsdafasd
+	// Optional. Sticker set thumbnail in the .WEBP, .TGS, or .WEBM format
 	Thumb *PhotoSize `json:"thumb,omitempty"`
 }
 

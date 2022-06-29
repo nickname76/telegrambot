@@ -57,7 +57,7 @@ type SendMessageParams struct {
 	// Unique identifier for the target chat or username of the target channel
 	// (in the format @channelusername)
 	ChatID ChatIDOrUsername `json:"chat_id"`
-	// Text of the message to be sent, 1-4096 characters after entities parsin
+	// Text of the message to be sent, 1-4096 characters after entities parsing
 	Text string `json:"text"`
 	// Optional. Mode for parsing entities in the message text. See formatting
 	// options for more details.
@@ -1997,7 +1997,7 @@ type PinChatMessageParams struct {
 	ChatID ChatIDOrUsername `json:"chat_id"`
 	// Identifier of a message to pin
 	MessageID MessageID `json:"message_id"`
-	// Optinal. Pass True, if it is not necessary to send a notification to all
+	// Optional. Pass True, if it is not necessary to send a notification to all
 	// chat members about the new pinned message. Notifications are always
 	// disabled in channels and private chats.
 	DisableNotification bool `json:"disable_notification,omitempty"`

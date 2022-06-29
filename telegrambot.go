@@ -226,8 +226,8 @@ func StartReceivingUpdates(api *API, receiver func(update *Update, err error)) (
 	}, receiver)
 }
 
-// Starts receiving updates from Telegram with custom paramters.
-// You should not pass offset field in params.
+// Starts receiving updates from Telegram with custom parameters. You should not
+// pass offset field in params.
 func StartReceivingUpdatesWithParams(api *API, params GetUpdatesParams, receiver func(update *Update, err error)) (stop func()) {
 	stop = repeater.StartRepeater(0, func() {
 		updates, err := api.GetUpdates(&params)
@@ -264,8 +264,8 @@ func (usi updatesSortInterface) Swap(i, j int) {
 	usi[i], usi[j] = usi[j], usi[i]
 }
 
-// Used internally by StartReceivingUpdates. You can use it in cutom update
-// reciviers, to sort updates by their UpdateID
+// Used internally by StartReceivingUpdates. You can use it in custom update
+// receivers, to sort updates by their UpdateID
 func SortUpdates(updates []*Update) []*Update {
 	sortedUpdates := updatesSortInterface(updates)
 	sort.Sort(sortedUpdates)

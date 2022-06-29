@@ -156,7 +156,7 @@ type MaskPositionPoint string
 const (
 	MaskPositionPointForehead MaskPositionPoint = "forehead"
 	MaskPositionPointEyes     MaskPositionPoint = "eyes"
-	MaskPositionPointMounth   MaskPositionPoint = "mouth"
+	MaskPositionPointMouth    MaskPositionPoint = "mouth"
 	MaskPositionPointChin     MaskPositionPoint = "chin"
 )
 

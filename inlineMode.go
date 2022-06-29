@@ -236,7 +236,9 @@ type InlineQueryResult struct {
 	// Optional. For live locations, a direction in which the user is moving, in
 	// degrees. Must be between 1 and 360 if specified.
 	Heading int `json:"heading,omitempty"`
-	// sdafsdafasd
+	// Optional. For live locations, a maximum distance for proximity alerts
+	// about approaching another chat member, in meters. Must be between 1 and
+	// 100000 if specified.
 	ProximityAlertRadius int `json:"proximity_alert_radius,omitempty"`
 
 	// Address of the venue
@@ -328,7 +330,7 @@ type InputMessageContent struct {
 	HorizontalAccuracy float64 `json:"horizontal_accuracy,omitempty"`
 	// Optional. Period in seconds for which the location can be updated, should
 	// be between 60 and 86400.
-	LiveOeriod int `json:"live_period,omitempty"`
+	LivePeriod int `json:"live_period,omitempty"`
 	// Optional. For live locations, a direction in which the user is moving, in
 	// degrees. Must be between 1 and 360 if specified.
 	Heading int `json:"heading,omitempty"`

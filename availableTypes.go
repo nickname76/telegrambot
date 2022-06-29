@@ -61,8 +61,7 @@ type Chat struct {
 	// https://core.telegram.org/bots/api#getchat
 	Photo *ChatPhoto `json:"photo,omitempty"`
 	// Optional. Bio of the other party in a private chat. Returned only in
-	// getChat.
-	// https://core.telegram.org/bots/api#getchat
+	// getChat. https://core.telegram.org/bots/api#getchat
 	Bio string `json:"bio,omitempty"`
 	// Optional. True, if privacy settings of the other party in the private
 	// chat allows to use tg://user?id=<user_id> links only in chats with the
@@ -78,25 +77,20 @@ type Chat struct {
 	// https://core.telegram.org/bots/api#getchat
 	JoinByRequest bool `json:"join_by_request,omitempty"`
 	// Optional. Description, for groups, supergroups and channel chats.
-	// Returned only in getChat.
-	// https://core.telegram.org/bots/api#getchat
+	// Returned only in getChat. https://core.telegram.org/bots/api#getchat
 	Description string `json:"description,omitempty"`
 	// Optional. Primary invite link, for groups, supergroups and channel chats.
-	// Returned only in getChat.
-	// https://core.telegram.org/bots/api#getchat
+	// Returned only in getChat. https://core.telegram.org/bots/api#getchat
 	InviteLink string `json:"invite_link,omitempty"`
 	// Optional. The most recent pinned message (by sending date). Returned only
-	// in getChat.
-	// https://core.telegram.org/bots/api#getchat
+	// in getChat. https://core.telegram.org/bots/api#getchat
 	PinnedMessage *Message `json:"pinned_message,omitempty"`
 	// Optional. Default chat member permissions, for groups and supergroups.
-	// Returned only in getChat.
-	// https://core.telegram.org/bots/api#getchat
+	// Returned only in getChat. https://core.telegram.org/bots/api#getchat
 	Permissions *ChatPermissions `json:"permissions,omitempty"`
 	// Optional. For supergroups, the minimum allowed delay between consecutive
 	// messages sent by each unpriviledged user; in seconds. Returned only in
-	// getChat.
-	// https://core.telegram.org/bots/api#getchat
+	// getChat. https://core.telegram.org/bots/api#getchat
 	SlowModeDelay int `json:"slow_mode_delay,omitempty"`
 	// Optional. The time after which all messages sent to the chat will be
 	// automatically deleted; in seconds. Returned only in getChat.
@@ -107,12 +101,10 @@ type Chat struct {
 	// https://core.telegram.org/bots/api#getchat
 	HasProtectedContent bool `json:"has_protected_content,omitempty"`
 	// Optional. For supergroups, name of group sticker set. Returned only in
-	// getChat.
-	// https://core.telegram.org/bots/api#getchat
+	// getChat. https://core.telegram.org/bots/api#getchat
 	StickerSetName string `json:"sticker_set_name,omitempty"`
 	// Optional. True, if the bot can change the group sticker set. Returned
-	// only in getChat.
-	// https://core.telegram.org/bots/api#getchat
+	// only in getChat. https://core.telegram.org/bots/api#getchat
 	CanSetStickerSet bool `json:"can_set_sticker_set,omitempty"`
 	// Optional. Unique identifier for the linked chat, i.e. the discussion
 	// group identifier for a channel and vice versa; for supergroups and
@@ -1233,13 +1225,14 @@ type ChatMemberUpdated struct {
 type ChatJoinRequest struct {
 	// Chat to which the request was sent
 	Chat *Chat `json:"chat"`
-	// asdfdsafadsfd
+	// User that sent the join request
 	From *User `json:"from"`
-	// asdfdsafadsfd
+	// Date the request was sent in Unix time
 	Date int64 `json:"date"`
-	// sdafsdafasd
+	// Optional. Bio of the user.
 	Bio string `json:"bio,omitempty"`
-	// sdafsdafasd
+	// Optional. Chat invite link that was used by the user to send the join
+	// request
 	InviteLink *ChatInviteLink `json:"invite_link,omitempty"`
 }
 
