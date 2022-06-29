@@ -201,11 +201,11 @@ func filterInputFilesNeedingUpload(inputFiles []InputFile) []InputFile {
 	return filteredInputFiles
 }
 
-// Function for easy recieving of all possible updates from telegram
-func StartRecievingUpdates(api *API, reciever func(update *Update, err error)) (stop func()) {
+// Starts receiving all possible updates from Telegram
+func StartReceivingUpdates(api *API, receiver func(update *Update, err error)) (stop func()) {
 	// By default telegram sends most types of updates, but not all, so here are
 	// specified all types of updates
-	return StartRecievingUpdatesWithParams(api, GetUpdatesParams{
+	return StartReceivingUpdatesWithParams(api, GetUpdatesParams{
 		Timeout: 2,
 		AllowedUpdates: []UpdateType{
 			UpdateTypeMessage,
@@ -223,16 +223,16 @@ func StartRecievingUpdates(api *API, reciever func(update *Update, err error)) (
 			UpdateTypeChatMember,
 			UpdateTypeChatJoinRequest,
 		},
-	}, reciever)
+	}, receiver)
 }
 
-// Function for easy recieving updates from telegram with custom settings.
+// Starts receiving updates from Telegram with custom paramters.
 // You should not pass offset field in params.
-func StartRecievingUpdatesWithParams(api *API, params GetUpdatesParams, reciever func(update *Update, err error)) (stop func()) {
+func StartReceivingUpdatesWithParams(api *API, params GetUpdatesParams, receiver func(update *Update, err error)) (stop func()) {
 	stop = repeater.StartRepeater(0, func() {
 		updates, err := api.GetUpdates(&params)
 		if err != nil {
-			reciever(nil, err)
+			receiver(nil, err)
 			return
 		}
 
@@ -243,7 +243,7 @@ func StartRecievingUpdatesWithParams(api *API, params GetUpdatesParams, reciever
 		updates = SortUpdates(updates)
 
 		for _, update := range updates {
-			reciever(update, nil)
+			receiver(update, nil)
 		}
 
 		params.Offset = updates[len(updates)-1].UpdateID + 1
@@ -264,7 +264,7 @@ func (usi updatesSortInterface) Swap(i, j int) {
 	usi[i], usi[j] = usi[j], usi[i]
 }
 
-// Used internally by StartRecievingUpdates. You can use it in cutom update
+// Used internally by StartReceivingUpdates. You can use it in cutom update
 // reciviers, to sort updates by their UpdateID
 func SortUpdates(updates []*Update) []*Update {
 	sortedUpdates := updatesSortInterface(updates)

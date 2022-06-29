@@ -34,7 +34,7 @@ func main() {
 		log.Fatalf("Error: %v", err)
 	}
 
-	stop := telegrambot.StartRecievingUpdates(api, func(update *telegrambot.Update, err error) {
+	stop := telegrambot.StartReceivingUpdates(api, func(update *telegrambot.Update, err error) {
 		if err != nil {
 			log.Printf("Error: %v", err)
 			return
