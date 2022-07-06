@@ -1469,7 +1469,13 @@ type InputMedia struct {
 // using multipart/form-data in the usual way that files are uploaded via the
 // browser.
 //
-// *IN THIS LIBRARY*: InputFile can be either FileID, FileURL, or FileReader
+// *NOTE FROM THIS LIBRARY DEVELOPER*: InputFile can be either FileID, FileURL,
+// or FileReader. If you want to upload large files, use self-hosted telegram
+// bot api server, and upload using FileURL with the file URL scheme
+// https://github.com/tdlib/telegram-bot-api
+// https://hub.docker.com/r/rmuhamedgaliev/telegram-bot-api
+// https://github.com/rmuhamedgaliev/telegram-bot-api
+// https://en.wikipedia.org/wiki/File_URI_scheme
 //
 // https://core.telegram.org/bots/api#inputfile
 // https://core.telegram.org/bots/api#sending-files
