@@ -1,4 +1,4 @@
-package tgbottools
+package tbtools
 
 import "github.com/nickname76/telegrambot"
 

@@ -1,4 +1,4 @@
-package tgbottools
+package tbtools
 
 import (
 	"strings"
