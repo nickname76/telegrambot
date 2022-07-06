@@ -2,7 +2,7 @@
 
 Telegram Bot API library in Go.
 
-The easest to use, most clean, and strongly typed Telegram Bot API library in Go available on Github.
+The easest to use, the most clean, and strongly typed Telegram Bot API library in Go.
 
 This repository also contains directory `tools`, which contains useful functions for Telegram bot development with this library. See https://pkg.go.dev/github.com/nickname76/telegrambot/tools
 
@@ -80,7 +80,7 @@ func main() {
 
 ## See also
 
-If you want to develop Telegram bot, you should also see those libraries, which might be useful for you
+If you want to develop Telegram bot, you should also see these libraries, which might be useful for you
 
 - [Repeater](https://github.com/nickname76/repeater) - Go library for creating repeating function calls
 - [Instorage](https://github.com/nickname76/instorage) - Simple, easy to use database for faster development of small projects and MVPs in Go. Uses Badger as a storage.
