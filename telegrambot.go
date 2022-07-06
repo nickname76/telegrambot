@@ -75,8 +75,8 @@ func NewAPI(token string) (*API, *User, error) {
 	return api, user, nil
 }
 
-// Used internally by this library
-type APIResponse struct {
+// Response on API request. Used internally by this library.
+type Response struct {
 	OK          bool   `json:"ok"`
 	ErrorCode   int    `json:"error_code,omitempty"`
 	Description string `json:"description,omitempty"`
@@ -94,7 +94,6 @@ func (api *API) makeAPICall(method string, requestData any, inputFiles []InputFi
 	)
 
 	jsoniterCfg := jsoniter.Config{
-		EscapeHTML:                    false,
 		OnlyTaggedField:               true,
 		ObjectFieldMustBeSimpleString: true,
 		CaseSensitive:                 true,
@@ -154,7 +153,7 @@ loop:
 			return 0, fmt.Errorf("makeAPICall: %w", err)
 		}
 
-		apiResp := &APIResponse{
+		apiResp := &Response{
 			Result: resultDest,
 		}
 
@@ -250,6 +249,24 @@ func StartReceivingUpdatesWithParams(api *API, params GetUpdatesParams, receiver
 	})
 
 	return stop
+}
+
+// Use to parse body from Webhook request, used to receive updates
+func ParseWebhookUpdate(body []byte) (*Update, error) {
+	jsoniterCfg := jsoniter.Config{
+		OnlyTaggedField:               true,
+		ObjectFieldMustBeSimpleString: true,
+		CaseSensitive:                 true,
+	}.Froze()
+
+	update := new(Update)
+
+	err := jsoniterCfg.Unmarshal(body, update)
+	if err != nil {
+		return nil, fmt.Errorf("ParseWebhookUpdate: %w", err)
+	}
+
+	return update, nil
 }
 
 type updatesSortInterface []*Update
