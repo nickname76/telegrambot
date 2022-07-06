@@ -5,6 +5,7 @@ package telegrambot
 import (
 	"encoding/hex"
 	"io"
+	"math/rand"
 )
 
 // This object represents a Telegram user or bot.
@@ -1509,12 +1510,29 @@ type FileReader struct {
 	// Name of the file
 	Name   string
 	Reader io.Reader
-}
 
-func (fr *FileReader) MarshalJSON() ([]byte, error) {
-	return []byte(`"` + "attach://" + hex.EncodeToString([]byte(fr.Name)) + `"`), nil
+	fieldname string
 }
 
 func (fr *FileReader) multipartFormFile() (fieldname string, filename string, reader io.Reader) {
-	return hex.EncodeToString([]byte(fr.Name)), fr.Name, fr.Reader
+	fr.checkFieldname()
+
+	return fr.fieldname, fr.Name, fr.Reader
+}
+
+func (fr *FileReader) MarshalJSON() ([]byte, error) {
+	fr.checkFieldname()
+
+	return []byte(`"` + "attach://" + fr.fieldname + `"`), nil
+}
+
+func (fr *FileReader) checkFieldname() {
+	if fr.fieldname != "" {
+		return
+	}
+
+	b := make([]byte, 6)
+	rand.Read(b)
+
+	fr.fieldname = hex.EncodeToString(b)
 }
