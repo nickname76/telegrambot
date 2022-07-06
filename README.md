@@ -10,7 +10,7 @@ Also check out Telegram deep links: https://t.me/DeepLink
 
 Telegram Bot API documentaion: https://core.telegram.org/bots/api
 
-Documentation: https://pkg.go.dev/github.com/nickname76/telegrambot
+Documentation for this library: https://pkg.go.dev/github.com/nickname76/telegrambot
 
 *Please, **star** this repository, if you found this library useful.*
 
