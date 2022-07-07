@@ -14,7 +14,7 @@ Documentation on `/tools` directory: https://pkg.go.dev/github.com/nickname76/te
 
 *Please, **star** this repository, if you found this library useful.*
 
-**DISCORD**: (discord.gg/golang)[https://discord.gg/rX4EhxsW6X] (#telegrambot channel)
+**DISCORD**: [https://discord.gg/golang](https://discord.gg/rX4EhxsW6X) (#telegrambot channel)
 
 ## Example usage
 
