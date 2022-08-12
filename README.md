@@ -2,7 +2,7 @@
 
 Telegram Bot API library in Go. The easest to use, the most clean, and strongly typed Telegram Bot API library in Go.
 
-Completely covers latest Bot API version - **6.1**.
+Completely covers latest Bot API version - **6.2**.
 
 Telegram Bot API documentaion: https://core.telegram.org/bots/api
 
