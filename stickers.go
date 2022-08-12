@@ -13,6 +13,10 @@ type Sticker struct {
 	// Unique identifier for this file, which is supposed to be the same over
 	// time and for different bots. Can't be used to download or reuse the file.
 	FileUniqueID FileUniqueID `json:"file_unique_id"`
+	// Type of the sticker, currently one of “regular”, “mask”, “custom_emoji”.
+	// The type of the sticker is independent from its format, which is
+	// determined by the fields is_animated and is_video.
+	Type StickerType `json:"type"`
 	// Sticker width
 	Width int `json:"width"`
 	// Sticker height
@@ -29,8 +33,13 @@ type Sticker struct {
 	Emoji string `json:"emoji,omitempty"`
 	// Optional. Name of the sticker set to which the sticker belongs
 	SetName StickerSetName `json:"set_name,omitempty"`
+	// Optional. For premium regular stickers, premium animation for the sticker
+	PremiumAnimation *File `json:"premium_animation,omitempty"`
 	// Optional. For mask stickers, the position where the mask should be placed
 	MaskPosition *MaskPosition `json:"mask_position,omitempty"`
+	// Optional. For custom emoji stickers, unique identifier of the custom
+	// emoji
+	CustomEmojiID CustomEmojiID `json:"custom_emoji_id,omitempty"`
 	// Optional. File size in bytes
 	FileSize int64 `json:"file_size,omitempty"`
 }
@@ -43,14 +52,15 @@ type StickerSet struct {
 	Name StickerSetName `json:"name"`
 	// Sticker set title
 	Title string `json:"title"`
+	// Type of stickers in the set, currently one of “regular”, “mask”,
+	// “custom_emoji”
+	StickerType StickerType `json:"sticker_type"`
 	// True, if the sticker set contains animated stickers
 	// https://telegram.org/blog/animated-stickers
 	IsAnimated bool `json:"is_animated"`
 	// True, if the sticker set contains video stickers
 	// https://telegram.org/blog/video-stickers-better-reactions
 	IsVideo bool `json:"is_video"`
-	// True, if the sticker set contains masks
-	ContainsMasks bool `json:"contains_masks"`
 	// List of all set stickers
 	Stickers []*Sticker `json:"stickers"`
 	// Optional. Sticker set thumbnail in the .WEBP, .TGS, or .WEBM format
@@ -152,6 +162,28 @@ func (api *API) GetStickerSet(params *GetStickerSetParams) (*StickerSet, error) 
 	return stickerSet, nil
 }
 
+type GetCustomEmojiStickersParams struct {
+	// List of custom emoji identifiers. At most 200 custom emoji identifiers
+	// can be specified.
+	CustomEmojiIDs []CustomEmojiID `json:"custom_emoji_ids"`
+}
+
+// Use this method to get information about custom emoji stickers by their
+// identifiers. Returns an Array of Sticker objects.
+// https://core.telegram.org/bots/api#sticker
+//
+// https://core.telegram.org/bots/api#getcustomemojistickers
+func (api *API) GetCustomEmojiStickers(params *GetCustomEmojiStickersParams) ([]*Sticker, error) {
+	stickers := []*Sticker{}
+
+	_, err := api.makeAPICall("getCustomEmojiStickers", params, nil, &stickers)
+	if err != nil {
+		return nil, fmt.Errorf("GetCustomEmojiStickers: %w", err)
+	}
+
+	return stickers, nil
+}
+
 type UploadStickerFileParams struct {
 	// User identifier of sticker file owner
 	UserID UserID `json:"user_id"`
@@ -182,7 +214,7 @@ type CreateNewStickerSetParams struct {
 	// User identifier of created sticker set owner
 	UserID UserID `json:"user_id"`
 	// Short name of sticker set, to be used in t.me/addstickers/ URLs (e.g.,
-	// animals). Can contain only english letters, digits and underscores. Must
+	// animals). Can contain only English letters, digits and underscores. Must
 	// begin with a letter, can't contain consecutive underscores and must end
 	// in "_by_<bot_username>". <bot_username> is case insensitive. 1-64
 	// characters.
@@ -195,6 +227,7 @@ type CreateNewStickerSetParams struct {
 	// exists on the Telegram servers, pass an HTTP URL as a String for Telegram
 	// to get a file from the Internet, or upload a new one using
 	// multipart/form-data. More info on Sending Files »
+	// https://core.telegram.org/bots/api#sending-files
 	PNGSticker InputFile `json:"png_sticker,omitempty"`
 	// Optional. *TGS* animation with the sticker, uploaded using
 	// multipart/form-data. See
@@ -206,17 +239,19 @@ type CreateNewStickerSetParams struct {
 	// https://core.telegram.org/stickers#video-sticker-requirements for
 	// technical requirements
 	WEBMSticker InputFile `json:"webm_sticker,omitempty"`
+	// Optional. Type of stickers in the set, pass “regular” or “mask”. Custom
+	// emoji sticker sets can't be created via the Bot API at the moment. By
+	// default, a regular sticker set is created.
+	StickerType StickerType `json:"sticker_type,omitempty"`
 	// One or more emoji corresponding to the sticker
 	Emojis string `json:"emojis"`
-	// Optional. Pass True, if a set of mask stickers should be created
-	ContainsMasks bool `json:"contains_masks,omitempty"`
 	// Optional. A JSON-serialized object for position where the mask should be
 	// placed on faces
 	MaskPosition *MaskPosition `json:"mask_position,omitempty"`
 }
 
 // Use this method to create a new sticker set owned by a user. The bot will be
-// able to edit the sticker set thus created. You *must* use exactly one of the
+// able to edit the sticker set thus created. You must use exactly one of the
 // fields png_sticker, tgs_sticker, or webm_sticker. Returns True on success.
 //
 // https://core.telegram.org/bots/api#createnewstickerset

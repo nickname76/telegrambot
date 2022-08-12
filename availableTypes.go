@@ -68,7 +68,11 @@ type Chat struct {
 	// chat allows to use tg://user?id=<user_id> links only in chats with the
 	// user. Returned only in getChat.
 	// https://core.telegram.org/bots/api#getchat
-	HasPrivateForwards string `json:"has_private_forwards,omitempty"`
+	HasPrivateForwards bool `json:"has_private_forwards,omitempty"`
+	// Optional. True, if the privacy settings of the other party restrict
+	// sending voice and video note messages in the private chat. Returned only
+	// in getChat. https://core.telegram.org/bots/api#getchat
+	HasRestrictedVoiceAndVideoMessages bool `json:"has_restricted_voice_and_video_messages,omitempty"`
 	// Optional. True, if users need to join the supergroup before they can send
 	// messages. Returned only in getChat.
 	// https://core.telegram.org/bots/api#getchat
@@ -316,7 +320,8 @@ type MessageEntity struct {
 	// text), “underline” (underlined text), “strikethrough” (strikethrough
 	// text), “spoiler” (spoiler message), “code” (monowidth string), “pre”
 	// (monowidth block), “text_link” (for clickable text URLs), “text_mention”
-	// (for users without usernames) https://telegram.org/blog/edit#new-mentions
+	// (for users without usernames), “custom_emoji” (for inline custom emoji
+	// stickers) https://telegram.org/blog/edit#new-mentions
 	Type MessageEntityType `json:"type"`
 	// Offset in UTF-16 code units to the start of the entity
 	Offset int `json:"offset"`
@@ -329,6 +334,10 @@ type MessageEntity struct {
 	User *User `json:"user,omitempty"`
 	// Optional. For “pre” only, the programming language of the entity text
 	Language string `json:"language,omitempty"`
+	// Optional. For “custom_emoji” only, unique identifier of the custom emoji.
+	// Use getCustomEmojiStickers to get full information about the sticker
+	// https://core.telegram.org/bots/api#getcustomemojistickers
+	CustomEmojiID CustomEmojiID `json:"custom_emoji_id,omitempty"`
 }
 
 // This object represents one size of a photo or a file / sticker thumbnail.
@@ -1531,7 +1540,7 @@ func (fr *FileReader) checkFieldname() {
 		return
 	}
 
-	b := make([]byte, 6)
+	b := make([]byte, 4)
 	rand.Read(b)
 
 	fr.fieldname = hex.EncodeToString(b)

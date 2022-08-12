@@ -62,22 +62,40 @@ type MessageID int
 type MessageEntityType string
 
 const (
-	MessageEntityTypeMention       MessageEntityType = "mention"
-	MessageEntityTypeHashtag       MessageEntityType = "hashtag"
-	MessageEntityTypeCashtag       MessageEntityType = "cashtag"
-	MessageEntityTypeBotCommand    MessageEntityType = "bot_command"
-	MessageEntityTypeURL           MessageEntityType = "url"
-	MessageEntityTypeEmail         MessageEntityType = "email"
-	MessageEntityTypePhoneNumber   MessageEntityType = "phone_number"
-	MessageEntityTypeBold          MessageEntityType = "bold"
-	MessageEntityTypeItalic        MessageEntityType = "italic"
-	MessageEntityTypeUnderline     MessageEntityType = "underline"
+	// @username
+	MessageEntityTypeMention MessageEntityType = "mention"
+	// #hashtag
+	MessageEntityTypeHashtag MessageEntityType = "hashtag"
+	// $USD
+	MessageEntityTypeCashtag MessageEntityType = "cashtag"
+	// /start@jobs_bot
+	MessageEntityTypeBotCommand MessageEntityType = "bot_command"
+	// https://telegram.org
+	MessageEntityTypeURL MessageEntityType = "url"
+	// do-not-reply@telegram.org
+	MessageEntityTypeEmail MessageEntityType = "email"
+	// +1-212-555-0123
+	MessageEntityTypePhoneNumber MessageEntityType = "phone_number"
+	// bold text
+	MessageEntityTypeBold MessageEntityType = "bold"
+	// italic text
+	MessageEntityTypeItalic MessageEntityType = "italic"
+	// underlined text
+	MessageEntityTypeUnderline MessageEntityType = "underline"
+	// strikethrough text
 	MessageEntityTypeStrikethrough MessageEntityType = "strikethrough"
-	MessageEntityTypeSpoiler       MessageEntityType = "spoiler"
-	MessageEntityTypeCode          MessageEntityType = "code"
-	MessageEntityTypePre           MessageEntityType = "pre"
-	MessageEntityTypeTextLink      MessageEntityType = "text_link"
-	MessageEntityTypeTextMention   MessageEntityType = "text_mention"
+	// spoiler message
+	MessageEntityTypeSpoiler MessageEntityType = "spoiler"
+	// monowidth string
+	MessageEntityTypeCode MessageEntityType = "code"
+	// monowidth block
+	MessageEntityTypePre MessageEntityType = "pre"
+	// for clickable text URLs
+	MessageEntityTypeTextLink MessageEntityType = "text_link"
+	// for users without usernames https://telegram.org/blog/edit#new-mentions
+	MessageEntityTypeTextMention MessageEntityType = "text_mention"
+	// for inline custom emoji stickers
+	MessageEntityTypeCustomEmoji MessageEntityType = "custom_emoji"
 )
 
 // Short name of a Game, serves as the unique identifier for the game
@@ -310,4 +328,14 @@ const (
 	MenuButtonTypeCommands MenuButtonType = "commands"
 	MenuButtonTypeWebApp   MenuButtonType = "web_app"
 	MenuButtonTypeDefault  MenuButtonType = "default"
+)
+
+type CustomEmojiID string
+
+type StickerType string
+
+const (
+	StickerTypeRegular     StickerType = "regular"
+	StickerTypeMask        StickerType = "mask"
+	StickerTypeCustomEmoji StickerType = "custom_emoji"
 )

@@ -188,7 +188,7 @@ func (api *API) CreateInvoiceLink(params *CreateInvoiceLinkParams) (string, erro
 
 	_, err := api.makeAPICall("createInvoiceLink", params, nil, &link)
 	if err != nil {
-		return "", fmt.Errorf("createInvoiceLink: %w", err)
+		return "", fmt.Errorf("CreateInvoiceLink: %w", err)
 	}
 
 	return link, nil
