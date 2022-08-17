@@ -8,13 +8,13 @@ Completely covers the latest Bot API version - **6.2**.
 
 Telegram Bot API documentaion: https://core.telegram.org/bots/api
 
-Telegram deep links: https://t.me/DeepLink
-
-Documentation on this library: https://pkg.go.dev/github.com/nickname76/telegrambot
-
-Documentation on `/tools` directory: https://pkg.go.dev/github.com/nickname76/telegrambot/tools
+Telegram deep links list: https://t.me/DeepLink
 
 **DISCORD**: [https://discord.gg/golang](https://discord.gg/rX4EhxsW6X) (#telegrambot channel)
+
+Documentation on this library:
+- **API** https://pkg.go.dev/github.com/nickname76/telegrambot
+- **Tools** https://pkg.go.dev/github.com/nickname76/telegrambot/tools
 
 *Please, **star** this repository, if you found this library useful.*
 
