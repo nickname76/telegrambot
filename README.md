@@ -1,4 +1,4 @@
-# <img src="https://user-images.githubusercontent.com/41116859/185259360-b9b44eb2-6e47-4451-8d1e-90e3e4f34eef.png" height="32" /> Telegrambot
+# <img src="https://user-images.githubusercontent.com/41116859/185259360-b9b44eb2-6e47-4451-8d1e-90e3e4f34eef.png" height="32" /> Telegrambot <img class="badge" tag="github.com/nickname76/telegrambot" align="right" src="https://goreportcard.com/badge/github.com/nickname76/telegrambot">
 
 <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.wixstatic.com%2Fmedia%2F950c70_eb49b9b040b14b70972c9777d736f7ea~mv2_d_2112_2112_s_2.gif&f=1&nofb=1" align="right" height="240" />
 
