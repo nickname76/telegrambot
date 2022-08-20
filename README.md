@@ -8,7 +8,9 @@ Completely covers the latest Bot API version - **6.2**
 
 Telegram Bot API documentaion: https://core.telegram.org/bots/api
 
-Telegram deep links list: https://corefork.telegram.org/api/links (https://t.me/DeepLink)
+Telegram deep links list: https://corefork.telegram.org/api/links
+
+More Telegram deep links: https://t.me/DeepLink
 
 **DISCORD**: [https://discord.gg/golang](https://discord.gg/rX4EhxsW6X) (#telegrambot channel)
 
