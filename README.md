@@ -14,9 +14,9 @@ More Telegram deep links: https://t.me/DeepLink
 
 **DISCORD**: [https://discord.gg/golang](https://discord.gg/rX4EhxsW6X) (#telegrambot channel)
 
-Documentation on this library:
-- **API** https://pkg.go.dev/github.com/nickname76/telegrambot
-- **Tools** https://pkg.go.dev/github.com/nickname76/telegrambot/tools
+**Documentation on this library:**
+- API https://pkg.go.dev/github.com/nickname76/telegrambot
+- Tools https://pkg.go.dev/github.com/nickname76/telegrambot/tools
 
 *Please, **star** this repository, if you found this library useful!*
 
