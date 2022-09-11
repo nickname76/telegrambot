@@ -5,7 +5,7 @@ go 1.18
 require (
 	github.com/json-iterator/go v1.1.12
 	github.com/nickname76/repeater v1.0.1
-	github.com/valyala/fasthttp v1.38.0
+	github.com/valyala/fasthttp v1.40.0
 )
 
 require (
