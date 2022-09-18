@@ -89,5 +89,4 @@ func main() {
 If you want to develop Telegram bot, you should also see these libraries, which might be useful for you
 
 - [Repeater](https://github.com/nickname76/repeater) - Go library for creating repeating function calls
-- [Instorage](https://github.com/nickname76/instorage) - Simple, easy to use database for faster development of small projects and MVPs in Go. Uses Badger as a storage.
-- [Locstrs](https://github.com/nickname76/locstrs) - Strings localisation library in Go
+- [QiwiP2P](https://github.com/nickname76/qiwip2p) - Go library for Qiwi P2P API
