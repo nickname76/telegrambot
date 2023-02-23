@@ -8,11 +8,9 @@ import (
 	"fmt"
 	"io"
 	"mime/multipart"
-	"sort"
 	"time"
 
 	jsoniter "github.com/json-iterator/go"
-	"github.com/nickname76/repeater"
 	"github.com/valyala/fasthttp"
 )
 
@@ -60,6 +58,8 @@ type API struct {
 // Creates Telegram Bot API interface instance. If you want to customize http
 // requests behavior or api endpoint url (e.x. use local instance), then
 // instance API struct directly
+//
+//	Check code of this function, if you want to create API with custom parameters
 func NewAPI(token string) (*API, *User, error) {
 	api := &API{
 		Token:         token,
@@ -198,93 +198,4 @@ func filterInputFilesNeedingUpload(inputFiles []InputFile) []InputFile {
 	}
 
 	return filteredInputFiles
-}
-
-// Starts receiving all possible updates from Telegram
-func StartReceivingUpdates(api *API, receiver func(update *Update, err error)) (stop func()) {
-	// By default telegram sends most types of updates, but not all, so here are
-	// specified all types of updates
-	return StartReceivingUpdatesWithParams(api, GetUpdatesParams{
-		Timeout: 2,
-		AllowedUpdates: []UpdateType{
-			UpdateTypeMessage,
-			UpdateTypeEditedMessage,
-			UpdateTypeChannelPost,
-			UpdateTypeEditedChannelPost,
-			UpdateTypeInlineQuery,
-			UpdateTypeChosenInlineResult,
-			UpdateTypeCallbackQuery,
-			UpdateTypeShippingQuery,
-			UpdateTypePreCheckoutQuery,
-			UpdateTypePoll,
-			UpdateTypePollAnswer,
-			UpdateTypeMyChatMember,
-			UpdateTypeChatMember,
-			UpdateTypeChatJoinRequest,
-		},
-	}, receiver)
-}
-
-// Starts receiving updates from Telegram with custom parameters. You should not
-// pass offset field in params.
-func StartReceivingUpdatesWithParams(api *API, params GetUpdatesParams, receiver func(update *Update, err error)) (stop func()) {
-	stop = repeater.StartRepeater(0, func() {
-		updates, err := api.GetUpdates(&params)
-		if err != nil {
-			receiver(nil, err)
-			return
-		}
-
-		if len(updates) == 0 {
-			return
-		}
-
-		updates = SortUpdates(updates)
-
-		for _, update := range updates {
-			receiver(update, nil)
-		}
-
-		params.Offset = updates[len(updates)-1].UpdateID + 1
-	})
-
-	return stop
-}
-
-// Use to parse body from Webhook request, used to receive updates
-func ParseWebhookUpdate(body []byte) (*Update, error) {
-	jsoniterCfg := jsoniter.Config{
-		OnlyTaggedField:               true,
-		ObjectFieldMustBeSimpleString: true,
-		CaseSensitive:                 true,
-	}.Froze()
-
-	update := new(Update)
-
-	err := jsoniterCfg.Unmarshal(body, update)
-	if err != nil {
-		return nil, fmt.Errorf("ParseWebhookUpdate: %w", err)
-	}
-
-	return update, nil
-}
-
-type updatesSortInterface []*Update
-
-func (usi updatesSortInterface) Len() int {
-	return len(usi)
-}
-func (usi updatesSortInterface) Less(i, j int) bool {
-	return usi[i].UpdateID < usi[j].UpdateID
-}
-func (usi updatesSortInterface) Swap(i, j int) {
-	usi[i], usi[j] = usi[j], usi[i]
-}
-
-// Used internally by StartReceivingUpdates. You can use it in custom update
-// receivers, to sort updates by their UpdateID
-func SortUpdates(updates []*Update) []*Update {
-	sortedUpdates := updatesSortInterface(updates)
-	sort.Sort(sortedUpdates)
-	return []*Update(sortedUpdates)
 }
