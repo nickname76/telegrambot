@@ -4,11 +4,11 @@
 
 The most clean and strongly typed Telegram Bot API library in Go
 
-Completely covers the latest Bot API version - **6.2**
+Completely covers Bot API version - **6.2**
 
 Telegram Bot API documentaion: https://core.telegram.org/bots/api
 
-Telegram deep links list: https://corefork.telegram.org/api/links
+Telegram deep links list: https://core.telegram.org/api/links
 
 More Telegram deep links: https://t.me/DeepLink
 
