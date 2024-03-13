@@ -176,7 +176,7 @@ type CopyMessageParams struct {
 	// saving
 	ProtectContent bool `json:"protect_content,omitempty"`
 	// Optional. If the message is a reply, ID of the original message
-	ReplyToMessageID bool `json:"reply_to_message_id,omitempty"`
+	ReplyToMessageID MessageID `json:"reply_to_message_id,omitempty"`
 	// Optional. Pass True, if the message should be sent even if the specified
 	// replied-to message is not found
 	AllowSendingWithoutReply bool `json:"allow_sending_without_reply,omitempty"`
@@ -244,7 +244,7 @@ type SendPhotoParams struct {
 	// saving
 	ProtectContent bool `json:"protect_content,omitempty"`
 	// Optional. If the message is a reply, ID of the original message
-	ReplyToMessageID bool `json:"reply_to_message_id,omitempty"`
+	ReplyToMessageID MessageID `json:"reply_to_message_id,omitempty"`
 	// Optional. Pass True, if the message should be sent even if the specified
 	// replied-to message is not found
 	AllowSendingWithoutReply bool `json:"allow_sending_without_reply,omitempty"`
@@ -321,7 +321,7 @@ type SendAudioParams struct {
 	// saving
 	ProtectContent bool `json:"protect_content,omitempty"`
 	// Optional. If the message is a reply, ID of the original message
-	ReplyToMessageID bool `json:"reply_to_message_id,omitempty"`
+	ReplyToMessageID MessageID `json:"reply_to_message_id,omitempty"`
 	// Optional. Pass True, if the message should be sent even if the specified
 	// replied-to message is not found
 	AllowSendingWithoutReply bool `json:"allow_sending_without_reply,omitempty"`
@@ -402,7 +402,7 @@ type SendDocumentParams struct {
 	// saving
 	ProtectContent bool `json:"protect_content,omitempty"`
 	// Optional. If the message is a reply, ID of the original message
-	ReplyToMessageID bool `json:"reply_to_message_id,omitempty"`
+	ReplyToMessageID MessageID `json:"reply_to_message_id,omitempty"`
 	// Optional. Pass True, if the message should be sent even if the specified
 	// replied-to message is not found
 	AllowSendingWithoutReply bool `json:"allow_sending_without_reply,omitempty"`
@@ -485,7 +485,7 @@ type SendVideoParams struct {
 	// saving
 	ProtectContent bool `json:"protect_content,omitempty"`
 	// Optional. If the message is a reply, ID of the original message
-	ReplyToMessageID bool `json:"reply_to_message_id,omitempty"`
+	ReplyToMessageID MessageID `json:"reply_to_message_id,omitempty"`
 	// Optional. Pass True, if the message should be sent even if the specified
 	// replied-to message is not found
 	AllowSendingWithoutReply bool `json:"allow_sending_without_reply,omitempty"`
@@ -570,7 +570,7 @@ type SendAnimationParams struct {
 	// saving
 	ProtectContent bool `json:"protect_content,omitempty"`
 	// Optional. If the message is a reply, ID of the original message
-	ReplyToMessageID bool `json:"reply_to_message_id,omitempty"`
+	ReplyToMessageID MessageID `json:"reply_to_message_id,omitempty"`
 	// Optional. Pass True, if the message should be sent even if the specified
 	// replied-to message is not found
 	AllowSendingWithoutReply bool `json:"allow_sending_without_reply,omitempty"`
@@ -638,7 +638,7 @@ type SendVoiceParams struct {
 	// saving
 	ProtectContent bool `json:"protect_content,omitempty"`
 	// Optional. If the message is a reply, ID of the original message
-	ReplyToMessageID bool `json:"reply_to_message_id,omitempty"`
+	ReplyToMessageID MessageID `json:"reply_to_message_id,omitempty"`
 	// Optional. Pass True, if the message should be sent even if the specified
 	// replied-to message is not found
 	AllowSendingWithoutReply bool `json:"allow_sending_without_reply,omitempty"`
@@ -723,7 +723,7 @@ type SendVideoNoteParams struct {
 	// saving
 	ProtectContent bool `json:"protect_content,omitempty"`
 	// Optional. If the message is a reply, ID of the original message
-	ReplyToMessageID bool `json:"reply_to_message_id,omitempty"`
+	ReplyToMessageID MessageID `json:"reply_to_message_id,omitempty"`
 	// Optional. Pass True, if the message should be sent even if the specified
 	// replied-to message is not found
 	AllowSendingWithoutReply bool `json:"allow_sending_without_reply,omitempty"`
@@ -774,7 +774,7 @@ type SendMediaGroupParams struct {
 	// saving
 	ProtectContent bool `json:"protect_content,omitempty"`
 	// Optional. If the message is a reply, ID of the original message
-	ReplyToMessageID bool `json:"reply_to_message_id,omitempty"`
+	ReplyToMessageID MessageID `json:"reply_to_message_id,omitempty"`
 	// Optional. Pass True, if the message should be sent even if the specified
 	// replied-to message is not found
 	AllowSendingWithoutReply bool `json:"allow_sending_without_reply,omitempty"`
@@ -840,7 +840,7 @@ type SendLocationParams struct {
 	// saving
 	ProtectContent bool `json:"protect_content,omitempty"`
 	// Optional. If the message is a reply, ID of the original message
-	ReplyToMessageID bool `json:"reply_to_message_id,omitempty"`
+	ReplyToMessageID MessageID `json:"reply_to_message_id,omitempty"`
 	// Optional. Pass True, if the message should be sent even if the specified
 	// replied-to message is not found
 	AllowSendingWithoutReply bool `json:"allow_sending_without_reply,omitempty"`
@@ -1010,7 +1010,7 @@ type SendVenueParams struct {
 	// saving
 	ProtectContent bool `json:"protect_content,omitempty"`
 	// Optional. If the message is a reply, ID of the original message
-	ReplyToMessageID bool `json:"reply_to_message_id,omitempty"`
+	ReplyToMessageID MessageID `json:"reply_to_message_id,omitempty"`
 	// Optional. Pass True, if the message should be sent even if the specified
 	// replied-to message is not found
 	AllowSendingWithoutReply bool `json:"allow_sending_without_reply,omitempty"`
@@ -1065,7 +1065,7 @@ type SendContactParams struct {
 	// saving
 	ProtectContent bool `json:"protect_content,omitempty"`
 	// Optional. If the message is a reply, ID of the original message
-	ReplyToMessageID bool `json:"reply_to_message_id,omitempty"`
+	ReplyToMessageID MessageID `json:"reply_to_message_id,omitempty"`
 	// Optional. Pass True, if the message should be sent even if the specified
 	// replied-to message is not found
 	AllowSendingWithoutReply bool `json:"allow_sending_without_reply,omitempty"`
@@ -1147,7 +1147,7 @@ type SendPollParams struct {
 	// saving
 	ProtectContent bool `json:"protect_content,omitempty"`
 	// Optional. If the message is a reply, ID of the original message
-	ReplyToMessageID bool `json:"reply_to_message_id,omitempty"`
+	ReplyToMessageID MessageID `json:"reply_to_message_id,omitempty"`
 	// Optional. Pass True, if the message should be sent even if the specified
 	// replied-to message is not found
 	AllowSendingWithoutReply bool `json:"allow_sending_without_reply,omitempty"`
@@ -1198,7 +1198,7 @@ type SendDiceParams struct {
 	// saving
 	ProtectContent bool `json:"protect_content,omitempty"`
 	// Optional. If the message is a reply, ID of the original message
-	ReplyToMessageID bool `json:"reply_to_message_id,omitempty"`
+	ReplyToMessageID MessageID `json:"reply_to_message_id,omitempty"`
 	// Optional. Pass True, if the message should be sent even if the specified
 	// replied-to message is not found
 	AllowSendingWithoutReply bool `json:"allow_sending_without_reply,omitempty"`
